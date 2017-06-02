@@ -6,7 +6,7 @@ app.config(function($routeProvider,$locationProvider){
             templateUrl: "talk.html"
         })
         .when('/AddTalk',{
-            template:'<h2>addtalk</h2>'
+            templateUrl: "addtalk.html"
         });
 });
 // app.run(function(editableOptions,$http) {
@@ -44,23 +44,25 @@ app.controller("talkCntrl",function($scope,$http,$filter){
 
         $scope.saveTalk = function(data){
             console.log(data);
-            $http(
+            return $http(
                 {
                     method:'POST',
                     url:'http://localhost:8080/RESTful/rest/talk/Update',
-                    params:{
-                        id:data.id,
-                        name:data.name,
-                        speaker:data.speaker,
-                        venue:data.venue,
-                        duration:data.duration
-                    }
-                }
-
-            ).then(function(data){
-                alert("ok");
-
-            });
-            console.log($http);
+                    headers:{'Content-Type': 'application/x-www-form-urlencoded'},
+                    transformRequest: function(obj) {
+                        var str = [];
+                        for(var p in obj)
+                            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                        return str.join("&");
+                    },
+                    data:data
+                })
         };
+        $scope.deleteTalk = function(id){
+            console.log(id);
+
+            $http.delete("http://localhost:8080/RESTful/rest/talk/"+id).then(function(){
+                $scope.talks.splice(index, 1);}
+            );
+        }
 });
