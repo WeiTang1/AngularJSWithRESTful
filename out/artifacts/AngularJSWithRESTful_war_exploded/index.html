@@ -1,34 +1,24 @@
-
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <title>$Title$</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://vitalets.github.io/angular-xeditable/dist/js/xeditable.js"></script>
+    <link hred="http://vitalets.github.io/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
     <script src = "app/talk.js"></script>
-  </head>
-  <body ng-app = "app" >
-  <div ng-controller="talkCntrl" >
-    <table>
-      <tr>
-        <th>id</th>
-        <th>name</th>
-        <th>speaker</th>
-        <th>venue</th>
-        <th>duration</th>
-      </tr>
 
-      <tr ng-repeat="t in talks"  >
-        <td>{{t.id}}</td>
-        <td>{{t.name}}</td>
-        <td>{{t.speaker}}</td>
-        <td>{{t.venue}}</td>
-        <td>{{t.duration}}</td>
-        <td><button>edit</button></td>
-        <td><button>delete</button></td>
-      </tr>
-    </table>
 
-    count : {{count}}
+</head>
+<body ng-app = "app">
+    <div>
+        <a href = "#!Talk">talk</a>
+        <a href = "#!AddTalk">addtalk</a>
+    </div>
 
-  </div>
-  </body>
+    <ng-view>
+    </ng-view>
+
+</body>
 </html>
