@@ -9,6 +9,14 @@ app.config(function($routeProvider,$locationProvider){
             templateUrl: "addtalk.html"
         });
 });
+app.directive("myDir",function(){
+    return{
+        scope:{},
+        restrict:"A",
+        template:
+        "<div>" + "<input type ='text' ng-model = 'txt'/>"+"</div>"+'{{txt}}'
+    }
+});
 // app.run(function(editableOptions,$http) {
 //     editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
 // });
@@ -64,5 +72,9 @@ app.controller("talkCntrl",function($scope,$http,$filter){
             $http.delete("http://localhost:8080/RESTful/rest/talk/"+id).then(function(){
                 $scope.talks.splice(index, 1);}
             );
+        };
+        $scope.submit = function(form){
+
         }
+
 });
